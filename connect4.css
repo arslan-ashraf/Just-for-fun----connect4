@@ -16,6 +16,22 @@ body {
 	margin: 5px;
 }
 
-.not-empty {
+.empty {
+	cursor: pointer;
+}
+
+.next-red-player {
 	background: red;
+}
+
+.next-black-player {
+	background: black;
+}
+
+.red {
+	background: red;
+}
+
+.black {
+	background: black;
 }
