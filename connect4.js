@@ -57,7 +57,7 @@ class Connect4 {
 			let row = lowest_empty_square.data('row')
 			let winner = original_this.check_winner(row, column)
 			if (winner){
-				alert('slfkjfs')
+				alert(winner + 'won')
 			}
 
 			original_this.player = original_this.player == 'red' ? 'black' : 'red'
@@ -67,12 +67,8 @@ class Connect4 {
 
 	check_winner(row, column){
 		let original_this = this
-		console.log('row: ' + row + ', column: ' + column)
 		function get_cell(i, j){
-			console.log('i: ' + i + ', j: ' + j)
 			let cell = $(`.cell[data-row='${i}'][data-column='${j}']`)
-			console.log('cell')
-			console.log(cell)
 			return cell
 		}
 
@@ -89,7 +85,6 @@ class Connect4 {
 				j += direction['j']
 				next = get_cell(i, j)
 			}
-			console.log('total: ' + total)
 			return total
 		}
 
@@ -102,7 +97,22 @@ class Connect4 {
 			return checking_win({i: -1, j: 0}, {i: 1, j:0})
 		}
 
-		return check_vertically()
+		function check_horizontally(){
+			return checking_win({i: 0, j: -1}, {i: 0, j: 1})
+		}
+
+		function check_top_left_to_bottom_right(){
+			return checking_win({i: 1, j: 1}, {i: -1, j: -1})
+		}
+
+		function check_bottom_left_to_top_right(){
+			return checking_win({i: 1, j: -1}, {i: 1, j: 1})
+		}
+
+		return check_vertically() || 
+				check_horizontally() || 
+				check_top_left_to_bottom_right() || 
+				check_bottom_left_to_top_right()
 	}
 
 }
