@@ -7,8 +7,18 @@
 	</head>
 	<body>
 
+		<div class="board"></div>
 
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="connect4.js"></script>
+
+		<script>
+			
+			$(document).ready(function(){
+				let connect4 = new Connect4('.board')
+				// console.log(connect4)
+			})
+
+		</script>
 	</body>
 </html>
